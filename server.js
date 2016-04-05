@@ -6,7 +6,7 @@ var cookieParser   = require('cookie-parser');
 var expressSession = require('express-session');
 var methodOverride = require('method-override');
 var mysql 		   = require('mysql');
-
+var config		   = require('./config.js');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -36,6 +36,14 @@ mongoose.connect(config.database,function(err) {
 		} else {
 
 		console.log(err);
+	}
+
+});
+
+app.listen(config.port,function(err){
+
+	if (!err) {
+		console.log("server running...");
 	}
 
 });
